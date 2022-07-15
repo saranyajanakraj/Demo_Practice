@@ -2,7 +2,7 @@ from configparser import ConfigParser
 import psycopg2
 import os
 
-def config(filename='database.ini', section='redshift'):
+def config(filename='database.ini', section='preprod_gba'):
     # create a parser
     parser = ConfigParser()
     # read config file

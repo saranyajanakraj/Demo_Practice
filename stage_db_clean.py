@@ -2,7 +2,7 @@ from configparser import ConfigParser
 import psycopg2
 import os
 
-def config(filename='database.ini', section='uat_gba'):
+def config(filename='database.ini', section='preprod_stage'):
     # create a parser
     parser = ConfigParser()
     # read config file
@@ -22,7 +22,7 @@ def config(filename='database.ini', section='uat_gba'):
 
 params = config()
 
-fd = open('gba_db_deploy.sql', 'r')
+fd = open('stage_clean.sql', 'r')
 sqlFile = fd.read()
 fd.close()
 
@@ -30,12 +30,11 @@ fd.close()
 sqlCommands = sqlFile.split(';')
 
 print(sqlCommands)
-
 for command in sqlCommands[:-1]:
     print(command)
     conn = psycopg2.connect(**params)
     cur = conn.cursor()
     cur.execute(f'{command}')
-    #rows = cur.fetchall()
-    #print(rows)
+   # rows = cur.fetchall()
+   # print(rows)
     conn.commit()
