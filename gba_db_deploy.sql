@@ -1,1 +1,1 @@
-create table gba_db.booking(id int,name varchar(10),address varchar(40));
+create table gba_db.customer(id int,name varchar(10),address varchar(40));
